@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico - Saúde</title>
+    <link rel="stylesheet" href="../../css/liquid-gas.css">
+</head>
+<body>
+    <nav class="nav-sidebar">
+        <div class="nav-logo">
+            <h1>💧 Health Track</h1>
+            <p>Sistema de Saúde</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../../dashboard.html" class="nav-link"><span class="nav-icon">📊</span> Dashboard</a></li>
+            <li class="nav-item"><a href="../pacientes/index.html" class="nav-link"><span class="nav-icon">👥</span> Pacientes</a></li>
+            <li class="nav-item"><a href="../registro-diario/index.html" class="nav-link"><span class="nav-icon">📋</span> Registro Diário</a></li>
+            <li class="nav-item"><a href="../exames/index.html" class="nav-link"><span class="nav-icon">🔬</span> Exames</a></li>
+            <li class="nav-item"><a href="../treinos/index.html" class="nav-link"><span class="nav-icon">💪</span> Treinos</a></li>
+            <li class="nav-item"><a href="../refeicoes/index.html" class="nav-link"><span class="nav-icon">🍽️</span> Refeições</a></li>
+            <li class="nav-item"><a href="../metas/index.html" class="nav-link"><span class="nav-icon">🎯</span> Metas</a></li>
+            <li class="nav-item"><a href="../doencas/index.html" class="nav-link"><span class="nav-icon">🏥</span> Doenças</a></li>
+            <li class="nav-item"><a href="../remedios/index.html" class="nav-link"><span class="nav-icon">💊</span> Remédios</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link active"><span class="nav-icon">📜</span> Histórico</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Histórico Completo</h1>
+            <p>Visualize todo o histórico de informações registradas</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Filtros</h2>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tipo de Registro</label>
+                    <select id="filtro-tipo" class="form-control">
+                        <option value="todos">Todos os Tipos</option>
+                        <option value="registro-diario">Registro Diário</option>
+                        <option value="exames">Exames</option>
+                        <option value="treinos">Treinos</option>
+                        <option value="refeicoes">Refeições</option>
+                        <option value="metas">Metas</option>
+                        <option value="doencas">Doenças</option>
+                        <option value="remedios">Remédios</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Período</label>
+                    <select id="filtro-periodo" class="form-control">
+                        <option value="todos">Todo o Período</option>
+                        <option value="7dias">Últimos 7 dias</option>
+                        <option value="30dias">Últimos 30 dias</option>
+                        <option value="90dias">Últimos 90 dias</option>
+                        <option value="ano">Último ano</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <button id="btn-aplicar-filtros" class="btn btn-primary">Aplicar Filtros</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Registros</h2>
+                <div id="total-registros" class="badge badge-info" style="font-size: 0.9rem;">0 registros</div>
+            </div>
+            <div id="lista-historico" class="items-list">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📜</div>
+                    <div class="empty-state-text">Carregando histórico...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/common.js"></script>
+    <script src="historico.js"></script>
+</body>
+</html>
