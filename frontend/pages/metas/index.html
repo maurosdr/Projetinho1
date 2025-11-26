@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas - Saúde</title>
+    <link rel="stylesheet" href="../../css/liquid-gas.css">
+</head>
+<body>
+    <nav class="nav-sidebar">
+        <div class="nav-logo">
+            <h1>💧 Health Track</h1>
+            <p>Sistema de Saúde</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../../dashboard.html" class="nav-link"><span class="nav-icon">📊</span> Dashboard</a></li>
+            <li class="nav-item"><a href="../pacientes/index.html" class="nav-link"><span class="nav-icon">👥</span> Pacientes</a></li>
+            <li class="nav-item"><a href="../registro-diario/index.html" class="nav-link"><span class="nav-icon">📋</span> Registro Diário</a></li>
+            <li class="nav-item"><a href="../exames/index.html" class="nav-link"><span class="nav-icon">🔬</span> Exames</a></li>
+            <li class="nav-item"><a href="../treinos/index.html" class="nav-link"><span class="nav-icon">💪</span> Treinos</a></li>
+            <li class="nav-item"><a href="../refeicoes/index.html" class="nav-link"><span class="nav-icon">🍽️</span> Refeições</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link active"><span class="nav-icon">🎯</span> Metas</a></li>
+            <li class="nav-item"><a href="../doencas/index.html" class="nav-link"><span class="nav-icon">🏥</span> Doenças</a></li>
+            <li class="nav-item"><a href="../remedios/index.html" class="nav-link"><span class="nav-icon">💊</span> Remédios</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Metas de Saúde</h1>
+            <p>Defina e acompanhe suas metas de saúde</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Criar Nova Meta</h2>
+            </div>
+            <form id="form-metas">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Título *</label>
+                        <input type="text" name="titulo" required placeholder="Ex: Perder peso">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select name="tipo">
+                            <option value="">Selecione</option>
+                            <option value="Peso">Peso</option>
+                            <option value="Exercício">Exercício</option>
+                            <option value="Alimentação">Alimentação</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea name="descricao" rows="2" placeholder="Descreva sua meta"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Valor Alvo</label>
+                        <input type="number" step="0.1" name="valor_alvo" placeholder="Ex: 70">
+                    </div>
+                    <div class="form-group">
+                        <label>Valor Atual</label>
+                        <input type="number" step="0.1" name="valor_atual" placeholder="Ex: 75">
+                    </div>
+                    <div class="form-group">
+                        <label>Unidade</label>
+                        <input type="text" name="unidade" placeholder="Ex: kg, km, dias">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data Início</label>
+                        <input type="date" name="data_inicio">
+                    </div>
+                    <div class="form-group">
+                        <label>Data Fim</label>
+                        <input type="date" name="data_fim">
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status">
+                            <option value="em_andamento">Em Andamento</option>
+                            <option value="concluida">Concluída</option>
+                            <option value="pausada">Pausada</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Criar Meta</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Minhas Metas</h2>
+            </div>
+            <div id="lista-metas" class="items-list"></div>
+        </div>
+    </main>
+
+    <script src="../../js/common.js"></script>
+    <script src="metas.js"></script>
+</body>
+</html>
