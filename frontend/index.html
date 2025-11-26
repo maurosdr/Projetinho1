@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Saúde Pessoal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Registro de Saúde Pessoal</h1>
+            <p>Gerencie suas informações de saúde, treinos, alimentação e mais</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-button active" data-tab="registro-diario">Registro Diário</button>
+            <button class="tab-button" data-tab="exames">Exames</button>
+            <button class="tab-button" data-tab="treinos">Treinos</button>
+            <button class="tab-button" data-tab="refeicoes">Refeições</button>
+            <button class="tab-button" data-tab="metas">Metas</button>
+            <button class="tab-button" data-tab="doencas">Doenças</button>
+            <button class="tab-button" data-tab="remedios">Remédios</button>
+        </nav>
+
+        <!-- REGISTRO DIÁRIO -->
+        <section id="registro-diario" class="tab-content active">
+            <h2>Registro Diário</h2>
+            <form id="form-registro-diario" class="form-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data</label>
+                        <input type="date" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Peso (kg)</label>
+                        <input type="number" step="0.1" name="peso" placeholder="Ex: 70.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Pressão Arterial</label>
+                        <input type="text" name="pressao_arterial" placeholder="Ex: 120/80">
+                    </div>
+                    <div class="form-group">
+                        <label>Temperatura (°C)</label>
+                        <input type="number" step="0.1" name="temperatura" placeholder="Ex: 36.5">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Humor</label>
+                        <select name="humor">
+                            <option value="">Selecione</option>
+                            <option value="Ótimo">Ótimo</option>
+                            <option value="Bom">Bom</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Ruim">Ruim</option>
+                            <option value="Péssimo">Péssimo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nível de Energia (1-10)</label>
+                        <input type="number" min="1" max="10" name="nivel_energia">
+                    </div>
+                    <div class="form-group">
+                        <label>Horas de Sono</label>
+                        <input type="number" step="0.5" name="horas_sono" placeholder="Ex: 7.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Qualidade do Sono</label>
+                        <select name="qualidade_sono">
+                            <option value="">Selecione</option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="Boa">Boa</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Ruim">Ruim</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Sintomas</label>
+                    <input type="text" name="sintomas" placeholder="Ex: Dor de cabeça, fadiga">
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="3" placeholder="Anotações gerais do dia"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Registro</button>
+            </form>
+            <div id="lista-registro-diario" class="lista-items"></div>
+        </section>
+
+        <!-- EXAMES -->
+        <section id="exames" class="tab-content">
+            <h2>Exames Médicos</h2>
+            <form id="form-exames" class="form-card" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Título do Exame *</label>
+                        <input type="text" name="titulo" required placeholder="Ex: Hemograma Completo">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <input type="text" name="tipo" placeholder="Ex: Sangue, Imagem, Urina">
+                    </div>
+                    <div class="form-group">
+                        <label>Data do Exame</label>
+                        <input type="date" name="data_exame">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Arquivo (PDF, imagem)</label>
+                    <input type="file" name="arquivo" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="3" placeholder="Resultados, interpretação, recomendações médicas"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Exame</button>
+            </form>
+            <div id="lista-exames" class="lista-items"></div>
+        </section>
+
+        <!-- TREINOS -->
+        <section id="treinos" class="tab-content">
+            <h2>Treinos de Academia</h2>
+            <form id="form-treinos" class="form-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data *</label>
+                        <input type="date" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select name="tipo">
+                            <option value="">Selecione</option>
+                            <option value="Musculação">Musculação</option>
+                            <option value="Cardio">Cardio</option>
+                            <option value="Funcional">Funcional</option>
+                            <option value="CrossFit">CrossFit</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Exercício *</label>
+                        <input type="text" name="exercicio" required placeholder="Ex: Supino reto">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Séries</label>
+                        <input type="number" name="series" placeholder="Ex: 3">
+                    </div>
+                    <div class="form-group">
+                        <label>Repetições</label>
+                        <input type="number" name="repeticoes" placeholder="Ex: 12">
+                    </div>
+                    <div class="form-group">
+                        <label>Peso (kg)</label>
+                        <input type="number" step="0.5" name="peso" placeholder="Ex: 50">
+                    </div>
+                    <div class="form-group">
+                        <label>Duração (min)</label>
+                        <input type="number" name="duracao" placeholder="Ex: 30">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="2" placeholder="Como se sentiu, ajustes necessários"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Treino</button>
+            </form>
+            <div id="lista-treinos" class="lista-items"></div>
+        </section>
+
+        <!-- REFEIÇÕES -->
+        <section id="refeicoes" class="tab-content">
+            <h2>Refeições</h2>
+            <form id="form-refeicoes" class="form-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data *</label>
+                        <input type="date" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Refeição *</label>
+                        <select name="tipo_refeicao" required>
+                            <option value="">Selecione</option>
+                            <option value="Café da Manhã">Café da Manhã</option>
+                            <option value="Lanche da Manhã">Lanche da Manhã</option>
+                            <option value="Almoço">Almoço</option>
+                            <option value="Lanche da Tarde">Lanche da Tarde</option>
+                            <option value="Jantar">Jantar</option>
+                            <option value="Ceia">Ceia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Alimentos *</label>
+                    <textarea name="alimentos" rows="2" required placeholder="Ex: Arroz, frango, salada"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Calorias</label>
+                        <input type="number" name="calorias" placeholder="Ex: 450">
+                    </div>
+                    <div class="form-group">
+                        <label>Proteínas (g)</label>
+                        <input type="number" step="0.1" name="proteinas" placeholder="Ex: 30">
+                    </div>
+                    <div class="form-group">
+                        <label>Carboidratos (g)</label>
+                        <input type="number" step="0.1" name="carboidratos" placeholder="Ex: 50">
+                    </div>
+                    <div class="form-group">
+                        <label>Gorduras (g)</label>
+                        <input type="number" step="0.1" name="gorduras" placeholder="Ex: 15">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="2" placeholder="Notas sobre a refeição"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Refeição</button>
+            </form>
+            <div id="lista-refeicoes" class="lista-items"></div>
+        </section>
+
+        <!-- METAS -->
+        <section id="metas" class="tab-content">
+            <h2>Metas de Saúde</h2>
+            <form id="form-metas" class="form-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Título *</label>
+                        <input type="text" name="titulo" required placeholder="Ex: Perder peso">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select name="tipo">
+                            <option value="">Selecione</option>
+                            <option value="Peso">Peso</option>
+                            <option value="Exercício">Exercício</option>
+                            <option value="Alimentação">Alimentação</option>
+                            <option value="Saúde">Saúde</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea name="descricao" rows="2" placeholder="Descreva sua meta"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Valor Alvo</label>
+                        <input type="number" step="0.1" name="valor_alvo" placeholder="Ex: 70">
+                    </div>
+                    <div class="form-group">
+                        <label>Valor Atual</label>
+                        <input type="number" step="0.1" name="valor_atual" placeholder="Ex: 75">
+                    </div>
+                    <div class="form-group">
+                        <label>Unidade</label>
+                        <input type="text" name="unidade" placeholder="Ex: kg, km, dias">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data Início</label>
+                        <input type="date" name="data_inicio">
+                    </div>
+                    <div class="form-group">
+                        <label>Data Fim</label>
+                        <input type="date" name="data_fim">
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status">
+                            <option value="em_andamento">Em Andamento</option>
+                            <option value="concluida">Concluída</option>
+                            <option value="pausada">Pausada</option>
+                            <option value="cancelada">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Meta</button>
+            </form>
+            <div id="lista-metas" class="lista-items"></div>
+        </section>
+
+        <!-- DOENÇAS -->
+        <section id="doencas" class="tab-content">
+            <h2>Doenças Pré-existentes</h2>
+            <form id="form-doencas" class="form-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome da Doença *</label>
+                        <input type="text" name="nome" required placeholder="Ex: Hipertensão">
+                    </div>
+                    <div class="form-group">
+                        <label>Data do Diagnóstico</label>
+                        <input type="date" name="data_diagnostico">
+                    </div>
+                    <div class="form-group">
+                        <label>Gravidade</label>
+                        <select name="gravidade">
+                            <option value="">Selecione</option>
+                            <option value="Leve">Leve</option>
+                            <option value="Moderada">Moderada</option>
+                            <option value="Grave">Grave</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tratamento Atual</label>
+                    <input type="text" name="tratamento_atual" placeholder="Ex: Medicamento, fisioterapia">
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="3" placeholder="Informações adicionais sobre a condição"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="ativa" value="1" checked>
+                        Condição ativa
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Doença</button>
+            </form>
+            <div id="lista-doencas" class="lista-items"></div>
+        </section>
+
+        <!-- REMÉDIOS -->
+        <section id="remedios" class="tab-content">
+            <h2>Remédios</h2>
+            <form id="form-remedios" class="form-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome do Remédio *</label>
+                        <input type="text" name="nome" required placeholder="Ex: Losartana">
+                    </div>
+                    <div class="form-group">
+                        <label>Dosagem</label>
+                        <input type="text" name="dosagem" placeholder="Ex: 50mg">
+                    </div>
+                    <div class="form-group">
+                        <label>Frequência</label>
+                        <input type="text" name="frequencia" placeholder="Ex: 1x ao dia">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Horários</label>
+                    <input type="text" name="horarios" placeholder="Ex: 08:00, 20:00">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data Início</label>
+                        <input type="date" name="data_inicio">
+                    </div>
+                    <div class="form-group">
+                        <label>Data Fim (se aplicável)</label>
+                        <input type="date" name="data_fim">
+                    </div>
+                    <div class="form-group">
+                        <label>Prescrito Por</label>
+                        <input type="text" name="prescrito_por" placeholder="Nome do médico">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="2" placeholder="Instruções especiais, efeitos colaterais"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="ativo" value="1" checked>
+                        Uso ativo
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary">Adicionar Remédio</button>
+            </form>
+            <div id="lista-remedios" class="lista-items"></div>
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
