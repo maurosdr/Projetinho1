@@ -238,6 +238,42 @@ app.delete('/api/registro-diario/:id', (req, res) => {
   });
 });
 
+// ===== ROTAS DE PACIENTES =====
+app.get('/api/pacientes', (req, res) => {
+  db.all('SELECT * FROM pacientes ORDER BY nome ASC', [], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+});
+
+app.get('/api/pacientes/:id', (req, res) => {
+  db.get('SELECT * FROM pacientes WHERE id = ?', [req.params.id], (err, row) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (!row) return res.status(404).json({ error: 'Paciente não encontrado' });
+    res.json(row);
+  });
+});
+
+app.post('/api/pacientes', (req, res) => {
+  const { nome, data_nascimento, cpf, email, telefone, tipo_sanguineo, observacoes } = req.body;
+
+  db.run(
+    'INSERT INTO pacientes (nome, data_nascimento, cpf, email, telefone, tipo_sanguineo, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?)',
+    [nome, data_nascimento, cpf, email, telefone, tipo_sanguineo, observacoes],
+    function(err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json({ id: this.lastID, message: 'Paciente adicionado com sucesso!' });
+    }
+  );
+});
+
+app.delete('/api/pacientes/:id', (req, res) => {
+  db.run('DELETE FROM pacientes WHERE id = ?', [req.params.id], function(err) {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ message: 'Paciente removido com sucesso!' });
+  });
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

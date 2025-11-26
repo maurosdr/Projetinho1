@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes - Registro de Saúde</title>
+    <link rel="stylesheet" href="../../css/liquid-gas.css">
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="nav-sidebar">
+        <div class="nav-logo">
+            <h1>💧 Health Track</h1>
+            <p>Sistema de Saúde</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="../../dashboard.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active">
+                    <span class="nav-icon">👥</span>
+                    Pacientes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../registro-diario/index.html" class="nav-link">
+                    <span class="nav-icon">📋</span>
+                    Registro Diário
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../exames/index.html" class="nav-link">
+                    <span class="nav-icon">🔬</span>
+                    Exames
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../treinos/index.html" class="nav-link">
+                    <span class="nav-icon">💪</span>
+                    Treinos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../refeicoes/index.html" class="nav-link">
+                    <span class="nav-icon">🍽️</span>
+                    Refeições
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../metas/index.html" class="nav-link">
+                    <span class="nav-icon">🎯</span>
+                    Metas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../doencas/index.html" class="nav-link">
+                    <span class="nav-icon">🏥</span>
+                    Doenças
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../remedios/index.html" class="nav-link">
+                    <span class="nav-icon">💊</span>
+                    Remédios
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Gerenciamento de Pacientes</h1>
+            <p>Cadastre pacientes e visualize o histórico completo de cada um</p>
+        </div>
+
+        <!-- Add Patient Form -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Adicionar Novo Paciente</h2>
+            </div>
+            <form id="form-paciente">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome Completo *</label>
+                        <input type="text" name="nome" required placeholder="Ex: João da Silva">
+                    </div>
+                    <div class="form-group">
+                        <label>Data de Nascimento</label>
+                        <input type="date" name="data_nascimento">
+                    </div>
+                    <div class="form-group">
+                        <label>CPF</label>
+                        <input type="text" name="cpf" placeholder="000.000.000-00">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="exemplo@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo Sanguíneo</label>
+                        <select name="tipo_sanguineo">
+                            <option value="">Selecione</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="3" placeholder="Informações adicionais sobre o paciente"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar Paciente</button>
+            </form>
+        </div>
+
+        <!-- Patient List -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Lista de Pacientes</h2>
+            </div>
+            <div id="lista-pacientes" class="items-list">
+                <div class="empty-state">
+                    <div class="empty-state-icon">👥</div>
+                    <div class="empty-state-text">Nenhum paciente cadastrado ainda</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient History Modal -->
+        <div id="patient-history-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-patient-name">Histórico do Paciente</h2>
+                    <button class="btn btn-secondary btn-small" onclick="closePatientHistory()">Fechar</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tabs for different history types -->
+                    <div class="history-tabs">
+                        <button class="history-tab-btn active" data-tab="registros">Registros Diários</button>
+                        <button class="history-tab-btn" data-tab="exames">Exames</button>
+                        <button class="history-tab-btn" data-tab="treinos">Treinos</button>
+                        <button class="history-tab-btn" data-tab="refeicoes">Refeições</button>
+                        <button class="history-tab-btn" data-tab="metas">Metas</button>
+                        <button class="history-tab-btn" data-tab="doencas">Doenças</button>
+                        <button class="history-tab-btn" data-tab="remedios">Remédios</button>
+                    </div>
+
+                    <!-- History Content -->
+                    <div id="history-content" class="items-list" style="margin-top: 20px;">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📋</div>
+                            <div class="empty-state-text">Carregando histórico...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 2px solid var(--neutral-light-gray);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: var(--neutral-darker-gray);
+        }
+
+        .modal-body {
+            padding: 25px 30px;
+        }
+
+        .history-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .history-tab-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--neutral-gray);
+            background: var(--neutral-white);
+            color: var(--neutral-dark-gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .history-tab-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .history-tab-btn.active {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-cyan) 100%);
+            color: var(--neutral-white);
+            border-color: var(--primary-blue);
+        }
+
+        .patient-card {
+            cursor: pointer;
+        }
+
+        .patient-card:hover {
+            border-left-color: var(--accent-teal);
+        }
+
+        .patient-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--neutral-light-gray);
+            border-radius: var(--border-radius);
+        }
+
+        .patient-summary-item {
+            text-align: center;
+        }
+
+        .patient-summary-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .patient-summary-label {
+            font-size: 0.85rem;
+            color: var(--neutral-medium-gray);
+            margin-top: 5px;
+        }
+    </style>
+
+    <script src="pacientes.js"></script>
+</body>
+</html>

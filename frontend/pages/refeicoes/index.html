@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refeições - Saúde</title>
+    <link rel="stylesheet" href="../../css/liquid-gas.css">
+</head>
+<body>
+    <nav class="nav-sidebar">
+        <div class="nav-logo">
+            <h1>💧 Health Track</h1>
+            <p>Sistema de Saúde</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../../dashboard.html" class="nav-link"><span class="nav-icon">📊</span> Dashboard</a></li>
+            <li class="nav-item"><a href="../pacientes/index.html" class="nav-link"><span class="nav-icon">👥</span> Pacientes</a></li>
+            <li class="nav-item"><a href="../registro-diario/index.html" class="nav-link"><span class="nav-icon">📋</span> Registro Diário</a></li>
+            <li class="nav-item"><a href="../exames/index.html" class="nav-link"><span class="nav-icon">🔬</span> Exames</a></li>
+            <li class="nav-item"><a href="../treinos/index.html" class="nav-link"><span class="nav-icon">💪</span> Treinos</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link active"><span class="nav-icon">🍽️</span> Refeições</a></li>
+            <li class="nav-item"><a href="../metas/index.html" class="nav-link"><span class="nav-icon">🎯</span> Metas</a></li>
+            <li class="nav-item"><a href="../doencas/index.html" class="nav-link"><span class="nav-icon">🏥</span> Doenças</a></li>
+            <li class="nav-item"><a href="../remedios/index.html" class="nav-link"><span class="nav-icon">💊</span> Remédios</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Refeições</h1>
+            <p>Registre suas refeições e monitore sua nutrição</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Adicionar Refeição</h2>
+            </div>
+            <form id="form-refeicoes">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data *</label>
+                        <input type="date" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Refeição *</label>
+                        <select name="tipo_refeicao" required>
+                            <option value="">Selecione</option>
+                            <option value="Café da Manhã">Café da Manhã</option>
+                            <option value="Lanche da Manhã">Lanche da Manhã</option>
+                            <option value="Almoço">Almoço</option>
+                            <option value="Lanche da Tarde">Lanche da Tarde</option>
+                            <option value="Jantar">Jantar</option>
+                            <option value="Ceia">Ceia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Alimentos *</label>
+                    <textarea name="alimentos" rows="2" required placeholder="Ex: Arroz, frango, salada"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Calorias</label>
+                        <input type="number" name="calorias" placeholder="Ex: 450">
+                    </div>
+                    <div class="form-group">
+                        <label>Proteínas (g)</label>
+                        <input type="number" step="0.1" name="proteinas" placeholder="Ex: 30">
+                    </div>
+                    <div class="form-group">
+                        <label>Carboidratos (g)</label>
+                        <input type="number" step="0.1" name="carboidratos" placeholder="Ex: 50">
+                    </div>
+                    <div class="form-group">
+                        <label>Gorduras (g)</label>
+                        <input type="number" step="0.1" name="gorduras" placeholder="Ex: 15">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="2" placeholder="Notas sobre a refeição"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar Refeição</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Histórico de Refeições</h2>
+            </div>
+            <div id="lista-refeicoes" class="items-list"></div>
+        </div>
+    </main>
+
+    <script src="../../js/common.js"></script>
+    <script src="refeicoes.js"></script>
+</body>
+</html>

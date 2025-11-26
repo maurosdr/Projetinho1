@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Diário - Saúde</title>
+    <link rel="stylesheet" href="../../css/liquid-gas.css">
+</head>
+<body>
+    <nav class="nav-sidebar">
+        <div class="nav-logo">
+            <h1>💧 Health Track</h1>
+            <p>Sistema de Saúde</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="../../dashboard.html" class="nav-link"><span class="nav-icon">📊</span> Dashboard</a></li>
+            <li class="nav-item"><a href="../pacientes/index.html" class="nav-link"><span class="nav-icon">👥</span> Pacientes</a></li>
+            <li class="nav-item"><a href="index.html" class="nav-link active"><span class="nav-icon">📋</span> Registro Diário</a></li>
+            <li class="nav-item"><a href="../exames/index.html" class="nav-link"><span class="nav-icon">🔬</span> Exames</a></li>
+            <li class="nav-item"><a href="../treinos/index.html" class="nav-link"><span class="nav-icon">💪</span> Treinos</a></li>
+            <li class="nav-item"><a href="../refeicoes/index.html" class="nav-link"><span class="nav-icon">🍽️</span> Refeições</a></li>
+            <li class="nav-item"><a href="../metas/index.html" class="nav-link"><span class="nav-icon">🎯</span> Metas</a></li>
+            <li class="nav-item"><a href="../doencas/index.html" class="nav-link"><span class="nav-icon">🏥</span> Doenças</a></li>
+            <li class="nav-item"><a href="../remedios/index.html" class="nav-link"><span class="nav-icon">💊</span> Remédios</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Registro Diário</h1>
+            <p>Acompanhe suas métricas de saúde diariamente</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Novo Registro</h2>
+            </div>
+            <form id="form-registro-diario">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data</label>
+                        <input type="date" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Peso (kg)</label>
+                        <input type="number" step="0.1" name="peso" placeholder="Ex: 70.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Pressão Arterial</label>
+                        <input type="text" name="pressao_arterial" placeholder="Ex: 120/80">
+                    </div>
+                    <div class="form-group">
+                        <label>Temperatura (°C)</label>
+                        <input type="number" step="0.1" name="temperatura" placeholder="Ex: 36.5">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Humor</label>
+                        <select name="humor">
+                            <option value="">Selecione</option>
+                            <option value="Ótimo">Ótimo</option>
+                            <option value="Bom">Bom</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Ruim">Ruim</option>
+                            <option value="Péssimo">Péssimo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nível de Energia (1-10)</label>
+                        <input type="number" min="1" max="10" name="nivel_energia">
+                    </div>
+                    <div class="form-group">
+                        <label>Horas de Sono</label>
+                        <input type="number" step="0.5" name="horas_sono" placeholder="Ex: 7.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Qualidade do Sono</label>
+                        <select name="qualidade_sono">
+                            <option value="">Selecione</option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="Boa">Boa</option>
+                            <option value="Regular">Regular</option>
+                            <option value="Ruim">Ruim</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Sintomas</label>
+                    <input type="text" name="sintomas" placeholder="Ex: Dor de cabeça, fadiga">
+                </div>
+                <div class="form-group">
+                    <label>Observações</label>
+                    <textarea name="observacoes" rows="3" placeholder="Anotações gerais do dia"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar Registro</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Registros Anteriores</h2>
+            </div>
+            <div id="lista-registro-diario" class="items-list"></div>
+        </div>
+    </main>
+
+    <script src="../../js/common.js"></script>
+    <script src="registro-diario.js"></script>
+</body>
+</html>

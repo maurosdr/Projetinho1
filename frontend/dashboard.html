@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Registro de Saúde</title>
+    <link rel="stylesheet" href="css/liquid-gas.css">
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="nav-sidebar">
+        <div class="nav-logo">
+            <h1>💧 Health Track</h1>
+            <p>Sistema de Saúde</p>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link active">
+                    <span class="nav-icon">📊</span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/pacientes/index.html" class="nav-link">
+                    <span class="nav-icon">👥</span>
+                    Pacientes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/registro-diario/index.html" class="nav-link">
+                    <span class="nav-icon">📋</span>
+                    Registro Diário
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/exames/index.html" class="nav-link">
+                    <span class="nav-icon">🔬</span>
+                    Exames
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/treinos/index.html" class="nav-link">
+                    <span class="nav-icon">💪</span>
+                    Treinos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/refeicoes/index.html" class="nav-link">
+                    <span class="nav-icon">🍽️</span>
+                    Refeições
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/metas/index.html" class="nav-link">
+                    <span class="nav-icon">🎯</span>
+                    Metas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/doencas/index.html" class="nav-link">
+                    <span class="nav-icon">🏥</span>
+                    Doenças
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/remedios/index.html" class="nav-link">
+                    <span class="nav-icon">💊</span>
+                    Remédios
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="page-header">
+            <h1>Dashboard</h1>
+            <p>Visão geral do seu sistema de saúde</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <h3>Total de Registros</h3>
+                <div class="stat-value" id="total-registros">0</div>
+                <div class="stat-label">registros diários</div>
+            </div>
+            <div class="stat-card">
+                <h3>Exames Realizados</h3>
+                <div class="stat-value" id="total-exames">0</div>
+                <div class="stat-label">exames médicos</div>
+            </div>
+            <div class="stat-card">
+                <h3>Treinos Concluídos</h3>
+                <div class="stat-value" id="total-treinos">0</div>
+                <div class="stat-label">sessões de treino</div>
+            </div>
+            <div class="stat-card">
+                <h3>Metas Ativas</h3>
+                <div class="stat-value" id="total-metas">0</div>
+                <div class="stat-label">metas em andamento</div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Acesso Rápido</h2>
+            </div>
+            <div class="dashboard-grid">
+                <a href="pages/registro-diario/index.html" class="btn btn-primary" style="text-decoration: none; justify-content: center;">
+                    📋 Novo Registro Diário
+                </a>
+                <a href="pages/treinos/index.html" class="btn btn-primary" style="text-decoration: none; justify-content: center;">
+                    💪 Registrar Treino
+                </a>
+                <a href="pages/exames/index.html" class="btn btn-primary" style="text-decoration: none; justify-content: center;">
+                    🔬 Adicionar Exame
+                </a>
+                <a href="pages/pacientes/index.html" class="btn btn-primary" style="text-decoration: none; justify-content: center;">
+                    👥 Ver Pacientes
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Atividade Recente</h2>
+            </div>
+            <div id="recent-activity" class="items-list">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📊</div>
+                    <div class="empty-state-text">Carregando atividades...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

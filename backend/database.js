@@ -103,6 +103,19 @@ db.serialize(() => {
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )`);
 
+  // Tabela de Pacientes
+  db.run(`CREATE TABLE IF NOT EXISTS pacientes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    data_nascimento DATE,
+    cpf TEXT,
+    email TEXT,
+    telefone TEXT,
+    tipo_sanguineo TEXT,
+    observacoes TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
+
   console.log('Banco de dados inicializado com sucesso!');
 });
 
